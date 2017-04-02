@@ -6,8 +6,9 @@ def main():
     #print(colored('hello', 'red'), colored(' world', 'yellow'))
     userInput = ''
     print("Welcome to the Air Waybill Checker.")
+    print(colored('This program requires Python 3 or above', 'green'))
     print("This is meant to help you find the correct number")
-    print("when a number is obscured or missing.\n")
+    print("of an air waybill when a number is obscured or missing.\n")
 
     print("Enter a number between 7 and 8 digits.")
     print("If 8 digits, enter the column number that is indecipherable (1-8)")
