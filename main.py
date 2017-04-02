@@ -1,7 +1,9 @@
 import sys
+from termcolor import colored
 
 def main():
-
+    # EXAMPLE OF COLOURED TEXT
+    #print(colored('hello', 'red'), colored(' world', 'yellow'))
     userInput = ''
     print("Welcome to the Air Waybill Checker.")
     print("This is meant to help you find the correct number")
