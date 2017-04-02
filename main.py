@@ -10,8 +10,9 @@ def main():
     print("This is meant to help you find the correct number")
     print("of an air waybill when a number is obscured or missing.\n")
 
-    print("Enter a number between 7 and 8 digits.")
-    print("If 8 digits, enter the column number that is indecipherable (1-8)")
+    print("\nEnter a number between 7 and 8 digits.")
+    print("If 8 digits, leave the indecipherable column blank")
+    print("i.e. 123 5678 if the 4th column is indecipherable\n")
 
     userInput = str(input('Enter your number, or \'quit\':'))
 
