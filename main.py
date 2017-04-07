@@ -34,15 +34,20 @@ def main():
                print("we have 7")
             #print(len(userInput.split()))
             else:
-                print((userInput.split()))
-        #waybillNumber = int(userInput)
-        #print(waybillNumber + 2)
-            userInput = str(input('Enter your number, or \'quit\':'))
-
+                #print((userInput.split()))
+                calculate_possible_numbers(userInput)
+                userInput="quit"
         pass
 
-def calculate_possible_numbers(waybill_number, questionable_column):
-
+def calculate_possible_numbers(waybill_number):
+    for x in range(0, 8):
+        #print all numbers before x
+        for y in range (0, x):
+            print(waybill_number[y])
+        print(colored(waybill_number[x], 'green'))
+        for z in range (x, 8):
+            print(waybill_number[z])
+        #print all number after x
     pass
 
 def missing_end_column(waybill_number):
