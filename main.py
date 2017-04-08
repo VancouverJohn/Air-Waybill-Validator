@@ -6,7 +6,7 @@ def main():
     #print(colored('hello', 'red'), colored(' world', 'yellow'))
     userInput = ''
     print("Welcome to the Air Waybill Checker.")
-    print(colored('This program requires Python 3 or above', 'green'))
+    print("This program requires Python 3 or above")
     print("This is meant to help you find the correct number")
     print("of an air waybill when a number is obscured or missing.\n")
 
@@ -31,18 +31,28 @@ def main():
 
         else:
             if length == 7:
-               print("we have 7")
-            #print(len(userInput.split()))
+               missing_end_column(userInput)
             else:
-                #print((userInput.split()))
-                calculate_possible_numbers(userInput)
-                userInput="quit"
+                if check_valid_airwaybill((userInput)):
+                    calculate_possible_numbers(userInput)
+                    userInput="quit"
+                else:
+                    print("? Air Waybill Number is valid")
         pass
 
+def check_valid_airwaybill(waybill_number):
+    #initial check for validity/ divide 1st 7 numbers by seven check modulus against check digit
+    return True
+    pass
+
 def calculate_possible_numbers(waybill_number):
-    for x in range(0, 8):
+    if ' ' in waybill_number:
+        first, second = waybill_number.split()
+        print(first, second)
+    else:
+        for x in range(0, 8):
         #print all numbers before x
-        print(waybill_number[0:(x)],colored(waybill_number[x], 'green'),waybill_number[(x+1):8], sep ='')
+            print(waybill_number[0:(x)],colored(waybill_number[x], 'green'),waybill_number[(x+1):8], sep ='')
     #print(colored(waybill_number[x], 'green'))
     #print(waybill_number[x:8])
         #print all number after x
