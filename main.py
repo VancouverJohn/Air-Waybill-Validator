@@ -42,11 +42,9 @@ def main():
 def calculate_possible_numbers(waybill_number):
     for x in range(0, 8):
         #print all numbers before x
-        for y in range (0, x):
-            print(waybill_number[y])
-        print(colored(waybill_number[x], 'green'))
-        for z in range (x, 8):
-            print(waybill_number[z])
+        print(waybill_number[0:(x)],colored(waybill_number[x], 'green'),waybill_number[x:8])
+    #print(colored(waybill_number[x], 'green'))
+    #print(waybill_number[x:8])
         #print all number after x
     pass
 
