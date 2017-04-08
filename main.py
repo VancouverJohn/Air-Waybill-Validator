@@ -38,7 +38,6 @@ def main():
                     userInput="quit"
                 else:
                     print("? Air Waybill Number is valid")
-        pass
 
 def check_valid_airwaybill(waybill_number):
     #initial check for validity/ divide 1st 7 numbers by seven check modulus against check digit
@@ -56,7 +55,6 @@ def calculate_possible_numbers(waybill_number):
     #print(colored(waybill_number[x], 'green'))
     #print(waybill_number[x:8])
         #print all number after x
-    pass
 
 def missing_end_column(waybill_number):
 
