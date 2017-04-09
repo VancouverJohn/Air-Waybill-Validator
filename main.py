@@ -2,9 +2,6 @@ import sys
 from termcolor import colored
 
 def main():
-    # EXAMPLE OF COLOURED TEXT
-    #print(colored('hello', 'red'), colored(' world', 'yellow'))
-    userInput = ''
     print("Welcome to the Air Waybill Checker.")
     print("This program requires Python 3 or above")
     print("This is meant to help you find the correct number")
@@ -32,6 +29,7 @@ def main():
         else:
             if length == 7:
                missing_end_column(userInput)
+               userInput = 'quit'
             else:
                 if check_valid_airwaybill(userInput) == True:
                     print("Air Waybill Number is Valid")
@@ -50,10 +48,8 @@ def check_valid_airwaybill(waybill_number):
     serialNumber = int(serialNumber)
     checkDigit = waybill_number[-1:]
     checkDigit = int(checkDigit)
-    remainder = int(serialNumber) % 7
-    print(remainder)
+    remainder = serialNumber % 7
     if remainder == checkDigit:
-        print(True)
         return True
     else:
         return False
@@ -71,8 +67,22 @@ def calculate_possible_numbers(waybill_number):
         #print all number after x
 
 def missing_end_column(waybill_number):
+    firstSeven = int(waybill_number)
+    remainder = firstSeven % 7
+    print(str(firstSeven) + colored(str(remainder), 'green'))
 
-    pass
+    checkDigit = int(waybill_number[-1:])
+    middleFive = str(waybill_number[:-1])
+    for n in range(0,9):
+        n = str(n)
+        testFirstSeven = n + middleFive
+        testFirstSeven = int(testFirstSeven)
+        mod = int(testFirstSeven % 7)
+        if mod == checkDigit:
+            if n == 0:
+                print(colored('0', 'green') + waybill_number)
+            else:
+                print(colored(str(n), 'green') + waybill_number)
 
 if __name__ == '__main__':
     sys.exit(main())
