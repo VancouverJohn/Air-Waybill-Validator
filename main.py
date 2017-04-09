@@ -1,5 +1,6 @@
 import sys
 from termcolor import colored
+highlightColour = 'red'
 
 def main():
     print("Welcome to the Air Waybill Checker.")
@@ -69,7 +70,7 @@ def calculate_possible_numbers(waybill_number):
 def missing_end_column(waybill_number):
     firstSeven = int(waybill_number)
     remainder = firstSeven % 7
-    print(str(firstSeven) + colored(str(remainder), 'green'))
+    print(str(firstSeven) + colored(str(remainder), highlightColour))
 
     checkDigit = int(waybill_number[-1:])
     middleFive = str(waybill_number[:-1])
@@ -80,9 +81,9 @@ def missing_end_column(waybill_number):
         mod = int(testFirstSeven % 7)
         if mod == checkDigit:
             if n == 0:
-                print(colored('0', 'green') + waybill_number)
+                print(colored('0', highlightColour) + waybill_number)
             else:
-                print(colored(str(n), 'green') + waybill_number)
+                print(colored(str(n), highlightColour) + waybill_number)
 
 if __name__ == '__main__':
     sys.exit(main())
