@@ -33,16 +33,30 @@ def main():
             if length == 7:
                missing_end_column(userInput)
             else:
-                if check_valid_airwaybill((userInput)):
-                    calculate_possible_numbers(userInput)
-                    userInput="quit"
+                if check_valid_airwaybill(userInput) == True:
+                    print("Air Waybill Number is Valid")
+                    userInput = 'quit'
                 else:
-                    print("? Air Waybill Number is valid")
+                    calculate_possible_numbers(userInput)
+                    userInput = 'quit'
+                #if check_valid_airwaybill((userInput)):
+                #    calculate_possible_numbers(userInput)
+                #    userInput="quit"
+                #else:
+                #    print("? Air Waybill Number is valid")
 
 def check_valid_airwaybill(waybill_number):
-    #initial check for validity/ divide 1st 7 numbers by seven check modulus against check digit
-    return True
-    pass
+    serialNumber = waybill_number[:-1]
+    serialNumber = int(serialNumber)
+    checkDigit = waybill_number[-1:]
+    checkDigit = int(checkDigit)
+    remainder = int(serialNumber) % 7
+    print(remainder)
+    if remainder == checkDigit:
+        print(True)
+        return True
+    else:
+        return False
 
 def calculate_possible_numbers(waybill_number):
     if ' ' in waybill_number:
