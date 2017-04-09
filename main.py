@@ -61,7 +61,7 @@ def calculate_possible_numbers(waybill_number):
     else:
         for x in range(0, 8):
         #print all numbers before x
-            print(waybill_number[0:(x)],colored(waybill_number[x], 'green'),waybill_number[(x+1):8], sep ='')
+            #print(waybill_number[0:(x)],colored(waybill_number[x], 'green'),waybill_number[(x+1):8], sep ='')
     #print(colored(waybill_number[x], 'green'))
     #print(waybill_number[x:8])
         #print all number after x
