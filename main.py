@@ -33,7 +33,7 @@ def main():
                userInput = 'quit'
             else:
                 if check_valid_airwaybill(userInput) == True:
-                    print("Air Waybill Number is Valid")
+                    print(colored("Air Waybill Number is Valid", highlightColour))
                     userInput = 'quit'
                 else:
                     calculate_possible_numbers(userInput)
