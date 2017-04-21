@@ -1,3 +1,10 @@
+#BUGS: WHY DO 06002224 AND 06002229 CREATE DIFFERENT OUTPUT?
+#FEATURES: IN missing_end_columns, make a new formatted section after the first
+# which tests all the inbetween columns as well
+# Refactor missing_end_columns to use the check_airwaybill_number function
+# Change interface to create the ability to enter another query if desired
+# (currently the program quits immediately after one query)
+
 import sys
 from termcolor import colored
 highlightColour = 'red'
