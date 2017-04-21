@@ -38,13 +38,11 @@ def main():
                 else:
                     if check_valid_airwaybill(userInput) == True:
                         print(colored("Air Waybill Number is Valid", highlightColour))
+                        userInput = 'quit'
+                    else:
+                        print("made it here")
                         calculate_possible_numbers(userInput)
                         userInput = 'quit'
-                #if check_valid_airwaybill((userInput)):
-                #    calculate_possible_numbers(userInput)
-                #    userInput="quit"
-                #else:
-                #    print("? Air Waybill Number is valid")
 
 def check_valid_airwaybill(waybill_number):
     serialNumber = waybill_number[:-1]
@@ -59,11 +57,13 @@ def check_valid_airwaybill(waybill_number):
 
 def calculate_possible_numbers(waybill_number):
 
-    #else: #for x in range(0, 8): #print all numbers before x #print(waybill_number[0:(x)],colored(waybill_number[x], 'green'),waybill_number[(x+1):8], sep ='')
-    #print(colored(waybill_number[x], 'green'))
-    #print(waybill_number[x:8])
-        #print all number after x
-        pass
+    for n in range(0,8):
+        first = waybill_number[-1:]
+        second = waybill_number[:-1]
+        for n in range(0, 10):
+            number = int(first + str(n) + second)
+            if check_valid_airwaybill(str(number)) == True:
+                print(first + colored(n, highlightColour) + second)
 
 def missing_column(waybill_number):
     first, second = waybill_number.split()
