@@ -59,13 +59,12 @@ def calculate_possible_numbers(waybill_number):
     for n in range(0,8):
         first = waybill_number[:n]
         second = waybill_number[n+1:]
-        #print(first + colored(str(n), highlightColour) + second)
         for y in range(0, 10):
-            # number = int(first + str(y) + second)
             y = str(y)
-            print(first + colored(y, highlightColour) + second)
-            #if check_valid_airwaybill(str(number)) == True:
-            #    print(first + colored(n, highlightColour) + second)
+            #print(first + colored(y, highlightColour) + second)
+            number = (first + y + second)
+            if check_valid_airwaybill(str(number)) == True:
+                print(first + colored(y, highlightColour) + second)
 
 def missing_column(waybill_number):
     first, second = waybill_number.split()
@@ -75,6 +74,9 @@ def missing_column(waybill_number):
         if check_valid_airwaybill(testMissingColumn) == True:
             print(first + colored(n, highlightColour) + second)
 
+
+# ADD FUNCTIONALITY TO FIRST CHECK END COLUMNS, THEN WORK WAY THROUGH REST OF COLUMNS
+# FORMATTED FOR THE EASE OF THE READERS USE
 def missing_end_column(waybill_number):
     firstSeven = int(waybill_number)
     remainder = firstSeven % 7
