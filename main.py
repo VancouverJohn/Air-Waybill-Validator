@@ -32,12 +32,14 @@ def main():
                missing_end_column(userInput)
                userInput = 'quit'
             else:
-                if check_valid_airwaybill(userInput) == True:
-                    print(colored("Air Waybill Number is Valid", highlightColour))
+                if ' ' in userInput:
+                    missing_column(userInput)
                     userInput = 'quit'
                 else:
-                    calculate_possible_numbers(userInput)
-                    userInput = 'quit'
+                    if check_valid_airwaybill(userInput) == True:
+                        print(colored("Air Waybill Number is Valid", highlightColour))
+                        calculate_possible_numbers(userInput)
+                        userInput = 'quit'
                 #if check_valid_airwaybill((userInput)):
                 #    calculate_possible_numbers(userInput)
                 #    userInput="quit"
@@ -56,16 +58,16 @@ def check_valid_airwaybill(waybill_number):
         return False
 
 def calculate_possible_numbers(waybill_number):
-    if ' ' in waybill_number:
-        first, second = waybill_number.split()
-        print(first, second)
-    #else:
-        #for x in range(0, 8):
-        #print all numbers before x
-            #print(waybill_number[0:(x)],colored(waybill_number[x], 'green'),waybill_number[(x+1):8], sep ='')
+
+    #else: #for x in range(0, 8): #print all numbers before x #print(waybill_number[0:(x)],colored(waybill_number[x], 'green'),waybill_number[(x+1):8], sep ='')
     #print(colored(waybill_number[x], 'green'))
     #print(waybill_number[x:8])
         #print all number after x
+        pass
+
+def missing_column(waybill_number):
+    first, second = waybill_number.split()
+    print(first, second)
 
 def missing_end_column(waybill_number):
     firstSeven = int(waybill_number)
