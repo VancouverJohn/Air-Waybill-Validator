@@ -2,11 +2,8 @@
 #FEATURES: IN missing_end_columns, make a new formatted section after the first
 # which tests all the inbetween columns as well
 # Refactor missing_end_columns to use the check_airwaybill_number function
-# Change interface to create the ability to enter another query if desired
-# (currently the program quits immediately after one query)
-# Shrink intro blurb and place in 'help' facility including details 
-# of how an air waybill is calculated for validity
-
+# When using missing_end_column, in the circumstance the first digit is a zero
+# it does not print to the screen
 import sys
 from termcolor import colored
 
@@ -30,7 +27,7 @@ def main():
             continue
 
         try:
-            userInput = int(userInput)
+            val = int(userInput)
         except ValueError:
             print("Please enter a 7 or 8 digit number only")
             continue
@@ -94,9 +91,6 @@ def missing_column(waybill_number):
 # ADD FUNCTIONALITY TO FIRST CHECK END COLUMNS, THEN WORK WAY THROUGH REST OF COLUMNS
 # FORMATTED FOR THE EASE OF THE READERS USE
 def missing_end_column(waybill_number):
-    firstSeven = int(waybill_number)
-    remainder = firstSeven % 7
-    print(str(firstSeven) + colored(str(remainder), highlightColour))
 
     checkDigit = int(waybill_number[-1:])
     middleFive = str(waybill_number[:-1])
@@ -110,6 +104,12 @@ def missing_end_column(waybill_number):
                 print(colored('0', highlightColour) + waybill_number)
             else:
                 print(colored(str(n), highlightColour) + waybill_number)
+
+    # FORMATTING ISSUE: IF FIRST NUMBER IS 0 IT DOES NOT PRINT TO SCREEN
+    firstSeven = int(waybill_number)
+    remainder = firstSeven % 7
+    print(str(firstSeven) + colored(str(remainder), highlightColour))
+
 
 if __name__ == '__main__':
     sys.exit(main())
