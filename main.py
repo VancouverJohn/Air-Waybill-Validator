@@ -26,7 +26,7 @@ def main():
 
         if userInput == 'help':
             help()
-            break
+            continue
 
         length = len(userInput)
 
