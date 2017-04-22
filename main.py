@@ -4,6 +4,8 @@
 # Refactor missing_end_columns to use the check_airwaybill_number function
 # Change interface to create the ability to enter another query if desired
 # (currently the program quits immediately after one query)
+# Shrink intro blurb and place in 'help' facility including details 
+# of how an air waybill is calculated for validity
 
 import sys
 from termcolor import colored
