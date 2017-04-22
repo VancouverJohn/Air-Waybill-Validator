@@ -6,7 +6,6 @@
 # (currently the program quits immediately after one query)
 # Shrink intro blurb and place in 'help' facility including details 
 # of how an air waybill is calculated for validity
-# IMPROVE INPUT VALIDATION
 
 import sys
 from termcolor import colored
@@ -57,7 +56,7 @@ def main():
 
 def help():
     print("Air waybills consist of a 3 digit airline prefix, a 7 digit serial number and a check digit.")
-    print("The prefix can be ignored.  When you divide the serial number by 7, you should get the check digit as the remainder.")
+    print("The prefix can be ignored.  When you divide the serial number by 7, the remainder should match the check digit.")
 
     print("Note: This program requires Python 3 or above")
 def check_valid_airwaybill(waybill_number):
