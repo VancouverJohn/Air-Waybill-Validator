@@ -6,24 +6,27 @@
 # (currently the program quits immediately after one query)
 # Shrink intro blurb and place in 'help' facility including details 
 # of how an air waybill is calculated for validity
+# IMPROVE INPUT VALIDATION
 
 import sys
 from termcolor import colored
+
 highlightColour = 'red'
 
 def main():
-    print("Welcome to the Air Waybill Checker.")
-    print("This program requires Python 3 or above")
-    print("This is meant to help you find the correct number")
-    print("of an air waybill when a number is obscured or missing.\n")
 
-    print("Enter a number between 7 and 8 digits.")
-    print("If 8 digits, you can leave the indecipherable column blank")
-    print("i.e. 123 5678 if the 4th column is indecipherable\n")
+    print('If the 6th column is indecipherable, enter i.e. 12345 78')
+    print('If there are only 7 digits shown, enter i.e. 1234567')
+    print('Otherwise, enter the full number i.e. 12345678')
 
-    userInput = str(input('Enter your number, or \'quit\':'))
+    userInput = ''
 
     while userInput != 'quit':
+        userInput = str(input('Enter your number, \'quit\', or \'help\':'))
+
+        if userInput == 'help':
+            help()
+            break
 
         length = len(userInput)
 
@@ -51,6 +54,16 @@ def main():
                     else:
                         calculate_possible_numbers(userInput)
                         userInput = 'quit'
+
+def help():
+    print("Welcome to the Air Waybill Checker.")
+    print("This program requires Python 3 or above")
+    print("This is meant to help you find the correct number")
+    print("of an air waybill when a number is obscured or missing.\n")
+
+    print("Enter a number between 7 and 8 digits.")
+    print("If 8 digits, you can leave the indecipherable column blank")
+    print("i.e. 123 5678 if the 4th column is indecipherable\n")
 
 def check_valid_airwaybill(waybill_number):
     serialNumber = waybill_number[:-1]
