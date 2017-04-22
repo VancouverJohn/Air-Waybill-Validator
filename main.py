@@ -42,18 +42,14 @@ def main():
         else:
             if length == 7:
                missing_end_column(userInput)
-               userInput = 'quit'
             else:
                 if ' ' in userInput:
                     missing_column(userInput)
-                    userInput = 'quit'
                 else:
                     if check_valid_airwaybill(userInput) == True:
                         print(colored("Air Waybill Number is Valid", highlightColour))
-                        userInput = 'quit'
                     else:
                         calculate_possible_numbers(userInput)
-                        userInput = 'quit'
 
 def help():
     print("Welcome to the Air Waybill Checker.")
