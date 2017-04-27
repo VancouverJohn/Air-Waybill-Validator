@@ -20,8 +20,8 @@ def main():
             help()
             continue
 
-        if !(all(x.isdigit() or x.isspace() for x in userInput)):
-            print("Input may only contain spaces and numbers")
+        if all(x.isdigit() or x.isspace() for x in userInput) == False:
+            print(colored("\nInput may only contain spaces and numbers\n", highlightColour))
             continue
 
         if length < 7 or length > 8:
