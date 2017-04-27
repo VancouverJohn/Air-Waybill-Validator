@@ -11,7 +11,7 @@ def main():
     while userInput != 'quit':
         print("Enter a number between 7 and 8 digits.")
         print('If a column is indecipherable, leave it blank i.e. 12345 78')
-        print('If there are only 7 digits shown, it\'s assumed there is a column missing on the end.')
+        print('If 7 digits are entered, it\'s assumed there is a column missing on the end.')
         userInput = str(input('\nEnter your number, \'quit\', or \'help\':'))
 
         length = len(userInput)
@@ -20,16 +20,12 @@ def main():
             help()
             continue
 
-        #try:
-        #    val = int(userInput)
-        #except ValueError:
-        #    print("Please enter a 7 or 8 digit number only")
-        #    continue
+        if !(all(x.isdigit() or x.isspace() for x in userInput)):
+            print("Input may only contain spaces and numbers")
+            continue
 
         if length < 7 or length > 8:
-            print("\ninvalid Entry.\n")
-
-
+            print("\nInvalid entry.\n")
         elif userInput == 'quit':
             break
 
@@ -37,7 +33,6 @@ def main():
             if length == 7:
                missing_end_column(userInput)
             else:
-                print("got to else")
                 if len(userInput.split()) > 1:
                     missing_column(userInput)
                 else:
@@ -47,10 +42,10 @@ def main():
                         calculate_possible_numbers(userInput)
 
 def help():
-    print("Air waybills consist of a 3 digit airline prefix, a 7 digit serial number and a check digit.")
-    print("The prefix can be ignored.  When you divide the serial number by 7, the remainder should match the check digit.")
-
-    print("Note: This program requires Python 3 or above")
+    print("\nNote: This program requires Python 3 or above\n")
+    print(colored("Air waybills consist of a 3 digit airline prefix, a 7 digit serial number, and a check digit.", highlightColour))
+    print(colored("This program ignores the prefix.  When you divide the serial number by 7, the remainder should match the check digit.", highlightColour))
+    print(colored("This program tests for a valid serial number by dividing it (the serial number) by 7.  The remainder must match the check digit to be a valid air waybill number.", highlightColour))
 def check_valid_airwaybill(waybill_number):
     serialNumber = waybill_number[:-1]
     serialNumber = int(serialNumber)
@@ -98,7 +93,6 @@ def missing_end_column(waybill_number):
             else:
                 print(colored(str(n), highlightColour) + waybill_number)
 
-    # FORMATTING ISSUE: IF FIRST NUMBER IS 0 IT DOES NOT PRINT TO SCREEN
     firstSeven = int(waybill_number)
     remainder = firstSeven % 7
     print(str(firstSeven) + colored(str(remainder), highlightColour))
