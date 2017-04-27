@@ -46,6 +46,7 @@ def help():
     print(colored("Air waybills consist of a 3 digit airline prefix, a 7 digit serial number, and a check digit.", highlightColour))
     print(colored("This program ignores the prefix.  When you divide the serial number by 7, the remainder should match the check digit.", highlightColour))
     print(colored("This program tests for a valid serial number by dividing it (the serial number) by 7.  The remainder must match the check digit to be a valid air waybill number.", highlightColour))
+
 def check_valid_airwaybill(waybill_number):
     serialNumber = waybill_number[:-1]
     serialNumber = int(serialNumber)
@@ -58,7 +59,6 @@ def check_valid_airwaybill(waybill_number):
         return False
 
 def calculate_possible_numbers(waybill_number):
-
     for n in range(0,8):
         first = waybill_number[:n]
         second = waybill_number[n+1:]
@@ -79,7 +79,6 @@ def missing_column(waybill_number):
 
 
 def missing_end_column(waybill_number):
-
     checkDigit = int(waybill_number[-1:])
     middleFive = str(waybill_number[:-1])
     for n in range(0,10):
@@ -92,11 +91,14 @@ def missing_end_column(waybill_number):
                 print(colored('0', highlightColour) + waybill_number)
             else:
                 print(colored(str(n), highlightColour) + waybill_number)
-
     firstSeven = int(waybill_number)
     remainder = firstSeven % 7
-    print(str(firstSeven) + colored(str(remainder), highlightColour))
-
+    firstDigit = int(waybill_number[:1])
+    if firstDigit == 0:
+        placeHolder = waybill_number[1:]
+        print(colored('0', highlightColour) + placeHolder + str(remainder))
+    else:
+        print(str(firstSeven) + colored(str(remainder), highlightColour))
 
 if __name__ == '__main__':
     sys.exit(main())
