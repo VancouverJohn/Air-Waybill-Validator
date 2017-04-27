@@ -1,10 +1,10 @@
+# Typing 'quit' presents 'Input may only contain spaces and numbers' before closing program
 import sys
 from termcolor import colored
 
 highlightColour = 'red'
 
 def main():
-
 
     userInput = ''
 
