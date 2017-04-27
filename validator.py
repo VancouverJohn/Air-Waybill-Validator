@@ -1,6 +1,3 @@
-# MISSING COLUMNS FUNCTION NOT BEING CALLED
-#CLEAN UP FORMATTING IN TERMINAL OUTPUT
-
 import sys
 from termcolor import colored
 
@@ -23,11 +20,11 @@ def main():
             help()
             continue
 
-        try:
-            val = int(userInput)
-        except ValueError:
-            print("Please enter a 7 or 8 digit number only")
-            continue
+        #try:
+        #    val = int(userInput)
+        #except ValueError:
+        #    print("Please enter a 7 or 8 digit number only")
+        #    continue
 
         if length < 7 or length > 8:
             print("\ninvalid Entry.\n")
@@ -40,6 +37,7 @@ def main():
             if length == 7:
                missing_end_column(userInput)
             else:
+                print("got to else")
                 if len(userInput.split()) > 1:
                     missing_column(userInput)
                 else:
