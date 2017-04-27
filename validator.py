@@ -1,9 +1,6 @@
-#BUGS: WHY DO 06002224 AND 06002229 CREATE DIFFERENT OUTPUT?
-#FEATURES: IN missing_end_columns, make a new formatted section after the first
-# which tests all the inbetween columns as well
-# Refactor missing_end_columns to use the check_airwaybill_number function
-# When using missing_end_column, in the circumstance the first digit is a zero
-# it does not print to the screen
+# MISSING COLUMNS FUNCTION NOT BEING CALLED
+#CLEAN UP FORMATTING IN TERMINAL OUTPUT
+
 import sys
 from termcolor import colored
 
@@ -43,11 +40,11 @@ def main():
             if length == 7:
                missing_end_column(userInput)
             else:
-                if ' ' in userInput:
+                if len(userInput.split()) > 1:
                     missing_column(userInput)
                 else:
                     if check_valid_airwaybill(userInput) == True:
-                        print(colored("Air Waybill Number is Valid", highlightColour))
+                        print(colored("\nAir Waybill Number is Valid\n", highlightColour))
                     else:
                         calculate_possible_numbers(userInput)
 
@@ -88,8 +85,6 @@ def missing_column(waybill_number):
             print(first + colored(n, highlightColour) + second)
 
 
-# ADD FUNCTIONALITY TO FIRST CHECK END COLUMNS, THEN WORK WAY THROUGH REST OF COLUMNS
-# FORMATTED FOR THE EASE OF THE READERS USE
 def missing_end_column(waybill_number):
 
     checkDigit = int(waybill_number[-1:])
