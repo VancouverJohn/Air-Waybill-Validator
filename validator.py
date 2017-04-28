@@ -21,8 +21,11 @@ def main():
             continue
 
         if all(x.isdigit() or x.isspace() for x in userInput) == False:
-            print(colored("\nInput may only contain spaces and numbers\n", highlightColour))
-            continue
+            if userInput != 'quit':
+                print(colored("\nInput may only contain spaces and numbers\n", highlightColour))
+                continue
+            else:
+                break
 
         if length < 7 or length > 8:
             print("\nInvalid entry.\n")
@@ -96,7 +99,7 @@ def missing_end_column(waybill_number):
     firstDigit = int(waybill_number[:1])
     if firstDigit == 0:
         placeHolder = waybill_number[1:]
-        print(colored('0', highlightColour) + placeHolder + str(remainder))
+        print('0' + placeHolder + colored(str(remainder), highlightColour))
     else:
         print(str(firstSeven) + colored(str(remainder), highlightColour))
 
